@@ -30,6 +30,6 @@ const resolvers = {
       }
 
       const token = signToken(user);
-      return { token, profile };
-    
+      return { token, user };
+   
 module.exports = resolvers;
