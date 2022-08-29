@@ -31,4 +31,7 @@ module.exports = {
 
     return jwt.sign({ data: payload }, secret, { expiresIn: expiration });
   },
+  isUserLoggedIn: () => {
+    return !!this.getToken() && !this.isTokenExpired(token);
+  },
 };
