@@ -4,7 +4,7 @@ const path = require("path");
 
 const { typeDefs, resolvers } = require("./schemas");
 const db = require("./config/connection");
-const { authMiddleware } = require("../client/utils/auth");
+const { authMiddleware } = require("./secretsMiddleware");
 const PORT = process.env.PORT || 3001;
 const app = express();
 const server = new ApolloServer({
