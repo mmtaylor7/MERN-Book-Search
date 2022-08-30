@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useMutation, useQuery } from "@apollo/client";
-import { GET_ME } from "../utils/queries";
+import { QUERY_ME } from "../utils/queries";
 import { REMOVE_BOOK, SAVE_BOOK } from "../utils/mutations";
 import {
   Jumbotron,
