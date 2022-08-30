@@ -81,7 +81,7 @@ const SearchBooks = () => {
         variables: { bookData: { ...bookToSave } },
       });
 
-      if (!response.ok) {
+      if (!data.ok) {
         throw new Error("something went wrong!");
       }
 
