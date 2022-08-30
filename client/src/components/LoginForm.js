@@ -4,7 +4,7 @@ import { Form, Button, Alert } from "react-bootstrap";
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../utils/mutations";
 
-import { loginUser } from "../utils/API";
+// import { loginUser } from "../utils/API"; don't need this anymore
 import Auth from "../utils/auth";
 
 const LoginForm = () => {
@@ -15,12 +15,12 @@ const LoginForm = () => {
   const [login, { error }] = useMutation(LOGIN_USER);
 
   useEffect(() => {
-    if(error) {
+    if (error) {
       setShowAlert(true);
     } else {
       setShowAlert(false);
     }
-  }, [error])
+  }, [error]);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -38,7 +38,7 @@ const LoginForm = () => {
     }
 
     try {
-      const response = await login( { variables: {...userFormData});
+      const data = await login({ variables: { ...userFormData } });
 
       if (!response.ok) {
         throw new Error("something went wrong!");
