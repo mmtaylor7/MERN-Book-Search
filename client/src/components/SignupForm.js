@@ -20,8 +20,12 @@ const SignupForm = () => {
   const [addUser] = useMutation(ADD_USER);
 
   useEffect(() => {
-    if
-  })
+    if (error) {
+      setShowAlert(true);
+    } else {
+      setShowAlert(false);
+    }
+  }, [error]);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
