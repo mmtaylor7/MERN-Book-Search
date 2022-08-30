@@ -17,27 +17,22 @@ import { removeBookId } from "../utils/localStorage";
 import { getLoggedInUser } from "../utils/queries";
 
 const SavedBooks = () => {
-  const [userData, setUserData] = useState({});
+  const [userData, setUserData] = useState({ savedBooks: [] });
 
   const [deleteBook, { error }] = useMutation(REMOVE_BOOK);
 
-  const { loading, data } = useQuery(getLoggedInUser);
+  const { loading, myError, data } = useQuery(getLoggedInUser);
 
-  setUserData(data.me);
-
-  // const userDataLength = Object.keys(userData).length;
-
-  // useEffect(() => {
-  //   const token = Auth.isUserLoggedIn() ? Auth.getToken() : null;
-
-  //   if (!token) {
-  //     return false;
-  //   }
-
-  //   const { loading, error, data } = useQuery(getLoggedInUser);
-
-  //   setUserData(data.me);
-  // }, [userDataLength]);
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+  if (myError) {
+    console.error(error);
+    return <div>Error!</div>;
+  }
+  if (data) {
+    setUserData(data.me);
+  }
 
   // create function that accepts the book's mongo _id value as param and deletes the book from the database
   const handleDeleteBook = async (bookId) => {
