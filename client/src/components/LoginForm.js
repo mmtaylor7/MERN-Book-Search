@@ -14,6 +14,14 @@ const LoginForm = () => {
 
   const [login, { error }] = useMutation(LOGIN_USER);
 
+  useEffect(() => {
+    if(error) {
+      setShowAlert(true);
+    } else {
+      setShowAlert(false);
+    }
+  }, [error])
+
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setUserFormData({ ...userFormData, [name]: value });
@@ -30,7 +38,7 @@ const LoginForm = () => {
     }
 
     try {
-      const response = await login(userFormData);
+      const response = await login( { variables: {...userFormData});
 
       if (!response.ok) {
         throw new Error("something went wrong!");
