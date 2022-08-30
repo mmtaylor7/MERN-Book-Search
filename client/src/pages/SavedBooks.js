@@ -14,12 +14,13 @@ import {
 
 import Auth from "../utils/auth";
 import { removeBookId } from "../utils/localStorage";
+import { getLoggedInUser } from "../utils/queries";
 
 const SavedBooks = () => {
   const [userData, setUserData] = useState({});
 
   const [deleteBook, { error }] = useMutation(REMOVE_BOOK);
-  const { loading, data } = useQuery(GET_ME);
+  const { loading, data } = useQuery(getLoggedInUser);
 
   // use this to determine if `useEffect()` hook needs to run again
   const userDataLength = Object.keys(userData).length;
