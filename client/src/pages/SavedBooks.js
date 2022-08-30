@@ -10,7 +10,8 @@ import {
   Button,
 } from "react-bootstrap";
 
-import { getMe, deleteBook } from "../utils/API";
+// import { getMe, deleteBook } from "../utils/API"; no longer needed
+
 import Auth from "../utils/auth";
 import { removeBookId } from "../utils/localStorage";
 
@@ -18,7 +19,7 @@ const SavedBooks = () => {
   const [userData, setUserData] = useState({});
 
   const [deleteBook, { error }] = useMutation(REMOVE_BOOK);
-  const [loading, data] = useQuery(GET_ME);
+  const { loading, data } = useQuery(GET_ME);
 
   // use this to determine if `useEffect()` hook needs to run again
   const userDataLength = Object.keys(userData).length;
