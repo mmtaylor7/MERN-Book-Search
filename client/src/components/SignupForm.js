@@ -19,6 +19,10 @@ const SignupForm = () => {
 
   const [addUser] = useMutation(ADD_USER);
 
+  useEffect(() => {
+    if
+  })
+
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setUserFormData({ ...userFormData, [name]: value });
